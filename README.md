@@ -7,3 +7,5 @@ Mobile app:
 - [ ] questions & answers page
 - [ ] bookmarks
 - [ ] profile page.
+
+Header and footer fixed
