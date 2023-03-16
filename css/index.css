@@ -108,6 +108,11 @@ h1 {
     background-color: var(--box-shadow-color);
 }
 
+.main__answers {
+    padding: 1rem;
+    display: none;
+}
+
 .main__question-hashtag {
     display: flex;
     align-self: flex-start;
