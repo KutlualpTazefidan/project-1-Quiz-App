@@ -17,28 +17,29 @@
 .main__page-statistics {
     display: flex;
     justify-content: space-around;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .main__stats-button {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem;
     background-color: transparent;
-    /* border: 0.2rem solid var(--third-color); */
+    border: 0rem solid var(--third-color);
     border-radius: 5px;
     box-shadow: var(--box-shadow-color) 0px 0px 2px 3px;
+    gap: 0.5rem;
 
 }
 
 .main__img-bookmarks-counter {
-    width: 3rem;
+    height: 1rem;
 }
 
 .main__img-questions-counter {
-    width: 3rem;
+    height: 1rem;
 }
 
 .main__page-settings {
