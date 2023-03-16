@@ -6,6 +6,7 @@
     --button-border-color: rgba(64, 63, 61, 0.527);
     --hashtag-background-color: rgba(202, 199, 192, 0.605);
     --third-color: #000;
+    --font-size: 20px;
 }
 
 * {
@@ -84,8 +85,13 @@ h1 {
 .main__show-answer-button {
     padding: 1rem;
     background-color: transparent;
-    border: 0.2rem solid var(--third-color);
+    /* border: 0.2rem solid var(--third-color); */
     border-radius: 5px;
+    box-shadow: var(--box-shadow-color) 0px 0px 3px 2px;
+}
+
+.main__show-answer-button:hover {
+    background-color: var(--box-shadow-color);
 }
 
 .main__question-hashtag {

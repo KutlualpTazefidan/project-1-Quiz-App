@@ -17,7 +17,7 @@
 .main__page-statistics {
     display: flex;
     justify-content: space-around;
-    gap: 20%;
+    gap: 1rem;
 }
 
 .main__stats-button {
@@ -27,8 +27,10 @@
     align-items: center;
     padding: 1rem;
     background-color: transparent;
-    border: 0.2rem solid var(--third-color);
+    /* border: 0.2rem solid var(--third-color); */
     border-radius: 5px;
+    box-shadow: var(--box-shadow-color) 0px 0px 2px 3px;
+
 }
 
 .main__img-bookmarks-counter {
@@ -53,6 +55,8 @@
     padding-top: 1rem;
 }
 
+
+/* The switch is from https://www.w3schools.com/howto/howto_css_switch.asp */
 .main__switch {
     position: relative;
     width: 60px;
