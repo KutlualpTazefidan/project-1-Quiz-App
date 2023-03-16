@@ -1,0 +1,16 @@
+@import "index.css";
+
+/* .main-content:nth-child(1),
+, */
+
+.main-content section:nth-child(1),
+.main-content section:nth-child(2),
+.main-content section:nth-child(3),
+.main-content section:nth-child(4) {
+    /* visibility: hidden; */
+    display: none;
+}
+
+.main__quiz-card>img {
+    content: url(/assets/bookmark_filled.png);
+}
