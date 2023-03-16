@@ -1,4 +1,4 @@
-@import "../index.css";
+@import "./index.css";
 
 .main-content {
     font-family: var(--font-family-main);
