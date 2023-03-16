@@ -75,11 +75,32 @@ h1 {
     top: -0.6rem;
 }
 
+.main__pressed {
+    z-index: -1;
+}
+
+#bookmark {
+    position: absolute;
+    width: 2.5rem;
+    right: 0.6rem;
+    top: -0.6rem;
+    z-index: 1;
+    width: 3em;
+    height: 3em;
+    z-index: 2;
+    opacity: 0;
+}
+
+#bookmark:checked+label>img:last-child {
+    z-index: 1;
+}
+
 .main__questions {
     padding-top: 3rem;
     padding-bottom: 1rem;
     max-width: 70%;
     text-align: center;
+    font-size: var(--font-size);
 }
 
 .main__show-answer-button {
