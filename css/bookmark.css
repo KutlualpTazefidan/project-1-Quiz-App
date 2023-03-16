@@ -6,5 +6,5 @@
 }
 
 .main__quiz-card>img {
-    content: url(/assets/bookmark_filled.png);
+    content: url(../assets/bookmark_filled.png);
 }
