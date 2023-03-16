@@ -8,4 +8,4 @@ Mobile app:
 - [ ] bookmarks
 - [ ] profile page.
 
-Header and footer fixed
+Header and footer fixed!
