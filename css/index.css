@@ -5,6 +5,7 @@
     --box-shadow-color: rgba(0, 0, 0, 0.18);
     --button-border-color: rgba(64, 63, 61, 0.527);
     --hashtag-background-color: rgba(202, 199, 192, 0.605);
+    --third-color: #000;
 }
 
 * {
@@ -83,7 +84,7 @@ h1 {
 .main__show-answer-button {
     padding: 1rem;
     background-color: transparent;
-    border: 0.2rem solid var(--);
+    border: 0.2rem solid var(--third-color);
     border-radius: 5px;
 }
 

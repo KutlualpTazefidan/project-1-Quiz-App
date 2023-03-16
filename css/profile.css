@@ -1,7 +1,114 @@
-@import "/css/bookmark.css";
+@import "/css/index.css";
 
-.main-content section:nth-child(5),
-.main-content section:nth-child(6) {
-    /* visibility: hidden; */
-    display: none;
+.main__personal-information {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+}
+
+.main__aboutme {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    width: 80%;
+}
+
+.main__page-statistics {
+    display: flex;
+    justify-content: space-around;
+    gap: 20%;
+}
+
+.main__stats-button {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: transparent;
+    border: 0.2rem solid var(--third-color);
+    border-radius: 5px;
+}
+
+.main__img-bookmarks-counter {
+    width: 3rem;
+}
+
+.main__img-questions-counter {
+    width: 3rem;
+}
+
+.main__page-settings {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    width: 80%;
+}
+
+.main__darkmode-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.main__switch {
+    position: relative;
+    width: 60px;
+    height: 34px;
+}
+
+.main__switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.main__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.main__slider::before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 20px;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.main__slider {
+    background-color: #2196F3;
+}
+
+input:focus+.main__slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.main__slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.main__slider {
+    border-radius: 34px;
+}
+
+.main__slider.round {
+    border-radius: 50%;
 }
