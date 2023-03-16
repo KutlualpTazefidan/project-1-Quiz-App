@@ -1,7 +1,7 @@
 @import "/css/index.css";
 
 .main-content {
-    font-family: var(--font-family-hashtags);
+    font-family: var(--font-family-main);
 }
 
 .main__personal-information {
@@ -74,6 +74,7 @@
     height: 0;
 }
 
+/* background rectangle of the switch */
 .main__slider {
     position: absolute;
     cursor: pointer;
@@ -85,6 +86,13 @@
     -webkit-transition: .4s;
     transition: .4s;
 }
+
+/*  - main__slider is a span element which has the before property.
+    - The ::before and ::after pseudo-elements in CSS allows you to insert content onto a page without it needing to be in the HTML.
+    - ::before requires content property ; even an empty one is enough 
+    - ::before used to insert an html element in css 
+    - transition allows a smooth change
+    */
 
 .main__slider::before {
     position: absolute;
@@ -107,7 +115,7 @@ input:focus+.main__slider {
     box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked+.main__slider:before {
+input:checked+.main__slider::before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
