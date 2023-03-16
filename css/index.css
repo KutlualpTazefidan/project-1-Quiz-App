@@ -113,6 +113,7 @@ h1 {
     bottom: 0;
     width: 100%;
     background-color: var(--primary-color);
+    box-shadow: var(--box-shadow-color) 0px 0px 10px 1px;
 }
 
 .footer__navbar {

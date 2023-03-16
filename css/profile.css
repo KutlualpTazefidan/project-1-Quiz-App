@@ -1,0 +1,7 @@
+@import "/css/bookmark.css";
+
+.main-content section:nth-child(5),
+.main-content section:nth-child(6) {
+    /* visibility: hidden; */
+    display: none;
+}
