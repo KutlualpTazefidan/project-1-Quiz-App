@@ -19,7 +19,7 @@ body {
     align-items: center;
     z-index: 1;
 
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: var(--font-family-header);
     font-size: medium;
     position: fixed;
     width: 100%;
@@ -34,6 +34,7 @@ h1 {
 
 /* Main part */
 .main-content {
+    font-family: var(--font-family-main);
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -95,7 +96,8 @@ h1 {
 }
 
 .main__show-answer-button {
-    padding: 1rem;
+    font-family: var(--font-family-main);
+    padding: 0.5rem;
     background-color: transparent;
     border: 0rem solid var(--third-color);
     border-radius: 5px;
@@ -113,6 +115,9 @@ h1 {
     padding: 0.5rem;
     padding-top: 1rem;
     gap: 0.5rem;
+    color: var(--font-color-hashstags);
+    font-family: var(--font-family-hashtags);
+    font-size: var(--font-size-hashtags);
 
 }
 

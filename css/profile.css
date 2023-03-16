@@ -1,5 +1,9 @@
 @import "/css/index.css";
 
+.main-content {
+    font-family: var(--font-family-hashtags);
+}
+
 .main__personal-information {
     display: flex;
     justify-content: space-around;
