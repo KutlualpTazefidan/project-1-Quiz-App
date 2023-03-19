@@ -4,19 +4,57 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Quiz App</title>
     <link rel="stylesheet" href="./css/index.css" />
+    <script src="./js/index.js" defer></script>
   </head>
   <body>
     <header class="main-header">
+      <section class="main__user-icon-class">
+        <img
+          src="./assets/Profile/icon.jpg"
+          class="main__user-icon"
+          alt="User Profile Icon"
+        />
+      </section>
       <h1>Quiz App</h1>
+      <button
+        type="button"
+        class="main__add-questions-button"
+        data-js="add-questions"
+      >
+        <img
+          src="./assets/add_questions.svg"
+          class="main__add-questions-icon"
+          alt="Add your question"
+        />
+      </button>
+      <!-- New question submit form according to: -->
+      <!-- https://www.w3schools.com/css/tryit.asp?filename=trycss_forms -->
+      <section class="main__quiz-submit-form">
+        <p class="main__questions">Your Question?</p>
+        <textarea
+          type="text"
+          name="newquestion"
+          class="main__question-input-field"
+          placeholder="This is the way..."
+          rows="5"
+        ></textarea>
+        <button type="submit" class="main__question-submit-button">
+          Submit
+        </button>
+      </section>
     </header>
     <main class="main-content">
       <section class="main__quiz-card">
         <p class="main__questions">
           1. What property flip the axes in the flipbox?
         </p>
-        <button type="button" class="main__show-answer-button">
+        <button
+          type="button"
+          class="main__show-answer-button"
+          onclick="newQuestion()"
+        >
           Show Answer
         </button>
         <p class="main__answers">flex-direction</p>
@@ -25,7 +63,12 @@
           <li>#flexbox</li>
           <li>#css</li>
         </ul>
-        <input type="checkbox" id="bookmark" aria-label="home button control" />
+        <input
+          type="checkbox"
+          id="bookmark"
+          data-js="bookmark-button"
+          aria-label="home button control"
+        />
         <label class="footer__link footer__home" for="bookmark">
           <img
             src="./assets/bookmark.png"
@@ -156,6 +199,34 @@
           Show Answer
         </button>
         <p class="main__answers">flex-direction</p>
+        <ul class="main__question-hashtag">
+          <li>#html</li>
+          <li>#flexbox</li>
+          <li>#css</li>
+        </ul>
+        <input type="checkbox" id="bookmark" aria-label="home button control" />
+        <label class="footer__link footer__home" for="bookmark">
+          <img
+            src="./assets/bookmark.png"
+            class="main__quiz-bookmark main__empty"
+            alt="bookmark for questions"
+          />
+          <img
+            src="./assets/bookmark_filled.png"
+            class="main__quiz-bookmark main__pressed"
+            alt="pressed bookmark for questions"
+          />
+        </label>
+      </section>
+
+      <!-- quiz massage template -->
+      <section class="main__quiz-card-template">
+        <p class="main__questions">?. Question Template</p>
+        <button type="button" class="main__show-answer-button">
+          Show Answer
+        </button>
+        <p class="main__answers">flex-direction</p>
+
         <ul class="main__question-hashtag">
           <li>#html</li>
           <li>#flexbox</li>

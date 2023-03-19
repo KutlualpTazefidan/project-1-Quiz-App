@@ -13,12 +13,13 @@ body {
 }
 
 /* Upper part of the page */
+/* ----------------------------------------------------------------------- */
 .main-header {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1;
-
     font-family: var(--font-family-header);
     font-size: medium;
     position: fixed;
@@ -27,10 +28,98 @@ body {
     box-shadow: var(--box-shadow-color) 0px 0px 10px 1px;
 }
 
+.main__user-icon {
+    width: 2.5rem;
+    border-radius: 50%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.main__user-icon-class {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 90%;
+    left: 1rem;
+    /* width: 80%; */
+    padding: 0.5rem;
+    background-color: transparent;
+    border: 0rem solid var(--third-color);
+    border-radius: 5px;
+}
+
 h1 {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
+
+.main__add-questions-button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 90%;
+    right: 1rem;
+    /* width: 80%; */
+    padding: 0.5rem;
+    background-color: white;
+    border: 0rem solid var(--third-color);
+    border-radius: 5px;
+    z-index: 3;
+
+    box-shadow: 0px 0px 3px 2px var(--box-shadow-color), ;
+}
+
+.main__add-questions-icon {
+    /* background-color: transparent; */
+    width: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.main__add-questions-icon-pressed {
+    content: url(../assets/add_questions_pressed.svg);
+}
+
+.main__quiz-submit-form {
+    position: fixed;
+    background-color: white;
+    top: 5%;
+    right: 1rem;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    min-width: 90%;
+    max-width: 95%;
+    min-height: 10rem;
+    /* border: 2px solid black; */
+    border-radius: 10px;
+    box-shadow: var(--box-shadow-color) 0px 0px 20px 5px;
+    z-index: 2;
+}
+
+.main__question-input-field {
+    border-radius: 1rem;
+    width: 80%;
+    height: 50%;
+    padding: 1rem;
+    max-width: 90%;
+    min-width: 60%;
+}
+
+.main__question-submit-button {
+    font-family: var(--font-family-main);
+    padding: 0.5rem;
+    background-color: transparent;
+    border: 0rem solid var(--third-color);
+    border-radius: 5px;
+    box-shadow: var(--box-shadow-color) 0px 0px 3px 2px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+/* ----------------------------------------------------------------------- */
 
 /* Main part */
 .main-content {
@@ -69,6 +158,10 @@ h1 {
 
 .main__pressed {
     z-index: -1;
+}
+
+.main__quiz-card-template {
+    display: none;
 }
 
 #bookmark {
