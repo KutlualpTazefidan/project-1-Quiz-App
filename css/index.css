@@ -80,23 +80,30 @@ h1 {
     content: url(../assets/add_questions_pressed.svg);
 }
 
+/* Expanding box according to
+https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_eff_animate */
+
 .main__quiz-submit-form {
     position: fixed;
     background-color: white;
-    top: 5%;
-    right: 1rem;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    top: 5%;
+    right: 1rem;
     min-width: 90%;
     max-width: 95%;
     min-height: 10rem;
-    /* border: 2px solid black; */
     border-radius: 10px;
     box-shadow: var(--box-shadow-color) 0px 0px 20px 5px;
     z-index: 2;
 }
+
+.main__quiz-submit-form-activate {
+    transform: scale(0.5);
+}
+
 
 .main__question-input-field {
     border-radius: 1rem;
