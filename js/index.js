@@ -1,4 +1,3 @@
-
 const addQuestionsButton = document.querySelector('[data-js="add-questions"]');
 const submitForm = document.querySelector('[data-js="quiz-submit-form"]');
 const newQuestionIcon = document.querySelector('[data-js="add-question-icon"]');
@@ -18,9 +17,7 @@ function createKeyframeAnimation() {
   let { x, y } = calculateCollapsedScale();
   let animatoin = "";
   let animationInverse = "";
-  for (let step=0; step <=frame; step++){
-
-  }
+  for (let step = 0; step <= frame; step++) {}
 }
 let i = 0;
 function calculateEaseValue(v, pow = 4) {

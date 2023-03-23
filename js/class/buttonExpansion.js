@@ -121,10 +121,10 @@ class expandableButton {
     menuEase = document.createElement("style");
     menuEase.classList.add("menu-ease");
 
-    const menuExpandAnimaiton = [];
-    const menuExpandContentsAnimaiton = [];
-    const menuCollapseAnimaiton = [];
-    const menuCollapsedContentsAnimaiton = [];
+    const menuExpandAnimation = [];
+    const menuExpandContentsAnimation = [];
+    const menuCollapseAnimation = [];
+    const menuCollapsedContentsAnimation = [];
     for (let i = 0; i <= nFrames; i++) {
       const step = this.ease(i / 100);
       const startX = this.collapsed.x;
@@ -140,33 +140,52 @@ class expandableButton {
         startY: 1,
         endX: this.collapsed.x,
         endY: this.collapsed.y,
-        outerAnimation: menuCollapseAnimaiton,
-        innerAnimation: menuCollapsedContentsAnimaiton,
+        outerAnimation: menuCollapseAnimation,
+        innerAnimation: menuCollapsedContentsAnimation,
       });
     }
+    menuEase.textContent = ` 
+      @keyframes menuExpandAnimation{
+        ${menuExpandAnimation.join("")}
+      }
+      @keyframes menuExpandContentsAnimation{
+        ${menuExpandContentsAnimation.join("")}
+      }
+      @keyframes menuCollapseAnimation{
+        ${menuCollapseAnimation.join("")}
+      }
+      @keyframes menuCollapsedContentsAnimation{
+        ${menuCollapsedContentsAnimation.join("")}
+      }`;
+    document.head.appendChild(menuEase);
+    return menuEase;
   }
 
-  // calculateCollapsedScale() {
-  //   const collapsed = newQuestionIcon.getBoundingClientRect();
-  //   const expanded = submitForm.getBoundingClientRect();
-  //   return {
-  //     x: collapsed.width / expanded.width,
-  //     y: collapsed.height / expanded.height,
-  //   };
-  //   // Baking expanding and collapsing animations, so that css can use them.
-  //   const frame = 100; // length of the loop and should be more 60 to have smooth animation
-  //   function createKeyframeAnimation() {
-  //     let { x, y } = calculateCollapsedScale();
-  //     let animatoin = "";
-  //     let animationInverse = "";
-  //     for (let step = 0; step <= frame; step++) {}
-  //   }
-  //   let i = 0;
-  //   function calculateEaseValue(v, pow = 4) {
-  //     return 1 - Math.pow(1 - v, pow);
-  //   }
-  //   let easedStep = calculateEaseValue(i, frame);
-  //   const xScale = x + (1 - x) * easedStep;
-  //   const yScale = y + (1 - y) * easedStep;
-  // }
+  appendAnimation({
+    i,
+    step,
+    startX,
+    startY,
+    endX,
+    endY,
+    outerAnimation,
+    innerAnimation,
+  } = opts) {
+    const xScale = startX + (endX - startX) * step;
+    const yScale = startY + (endY - startY) * step;
+    const invScaleX = 1 / xScale;
+    const invScaleY = 1 / yScale;
+
+    outerAnimation.push(`
+    ${i}% {}`);
+  }
+
+  clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  ease(v, pow = 4) {
+    v = this.clamp(v, 0, 1);
+    return 1 - Math.pow(1 - v, pow);
+  }
 }
