@@ -3,11 +3,16 @@
 // https://css-tricks.com/performant-expandable-animations-building-keyframes-on-the-fly/
 
 class expandableButton {
-  constructor(submitForm, newQuestionIcon) {
-    this.menu = submitForm;
-    this.menuContents = this.menu.querySelector(".js-menu");
-    this.menuToggleButton = this.menu.querySelector("js-menu-button");
-    this.menuTitle = this.menu.querySelector("js-menu-title");
+  constructor(
+    activationButton,
+    inputForm,
+    inputContents,
+    initialSizeAndPosition
+  ) {
+    this.inputForm = inputForm;
+    this.inputContents = inputContents;
+    this.formToggleButton = activationButton;
+    this.forminitialSizeAndPosition = initialSizeAndPosition;
 
     this.expanded = true;
     this.animate = false;
@@ -17,6 +22,7 @@ class expandableButton {
 
     // bind -> binds a function with stated arguments to a variable
     // so it can be used again and again
+    // Following three lines are used to use&store in it current state
     this.expand = this.expand.bind(this);
     this.collapse = this.collapse.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -28,6 +34,67 @@ class expandableButton {
     // we have the event listener, why do we still need to call these 2?
     this.collapse();
     this.activate();
+  }
+
+  calculateScales() {
+    // Storing the expanded and collapsed size of the menu
+    const collapsed = this.menuTitle.getBoundingClientRect();
+    const expanded = this.menu.getBoundingClientRect();
+
+    // Why divide by expanded.width? benefit ? % ? maybe normalizing
+    this.collapsed = {
+      x: collapsed.width / expanded.width,
+      y: collapsed.height / expanded.height,
+    };
+  }
+
+  createEaseAnimation() {
+    let menuEase = document.querySelector(".menu-ease");
+    if (menuEase) {
+      return menuEase;
+    }
+
+    menuEase = document.createElement("style");
+    menuEase.classList.add("menu-ease");
+
+    const menuExpandAnimation = [];
+    const menuExpandContentsAnimation = [];
+    const menuCollapseAnimation = [];
+    const menuCollapsedContentsAnimation = [];
+    for (let i = 0; i <= nFrames; i++) {
+      const step = this.ease(i / 100);
+      const startX = this.collapsed.x;
+      const startY = this.collapsed.y;
+      const endX = 1;
+      const endY = 1;
+
+      // Expand animation
+      this.appendAnimation({
+        i,
+        step,
+        startX: 1,
+        startY: 1,
+        endX: this.collapsed.x,
+        endY: this.collapsed.y,
+        outerAnimation: menuCollapseAnimation,
+        innerAnimation: menuCollapsedContentsAnimation,
+      });
+    }
+    menuEase.textContent = ` 
+      @keyframes menuExpandAnimation{
+        ${menuExpandAnimation.join("")}
+      }
+      @keyframes menuExpandContentsAnimation{
+        ${menuExpandContentsAnimation.join("")}
+      }
+      @keyframes menuCollapseAnimation{
+        ${menuCollapseAnimation.join("")}
+      }
+      @keyframes menuCollapsedContentsAnimation{
+        ${menuCollapsedContentsAnimation.join("")}
+      }`;
+    document.head.appendChild(menuEase);
+    return menuEase;
   }
 
   activate() {
@@ -101,66 +168,6 @@ class expandableButton {
     this.menuContents.classList.add("menu___contents--collapsed");
   }
 
-  calculateScales() {
-    const collapsed = this.menuTitle.getBoundingClientRect();
-    const expanded = this.menu.getBoundingClientRect();
-
-    // Why divide by expanded.width ? maybe normalizing
-    this.collapsed = {
-      x: collapsed.width / expanded.width,
-      y: collapsed.height / expanded.height,
-    };
-  }
-
-  createEaseAnimation() {
-    let menuEase = document.querySelector(".menu-ease");
-    if (menuEase) {
-      return menuEase;
-    }
-
-    menuEase = document.createElement("style");
-    menuEase.classList.add("menu-ease");
-
-    const menuExpandAnimation = [];
-    const menuExpandContentsAnimation = [];
-    const menuCollapseAnimation = [];
-    const menuCollapsedContentsAnimation = [];
-    for (let i = 0; i <= nFrames; i++) {
-      const step = this.ease(i / 100);
-      const startX = this.collapsed.x;
-      const startY = this.collapsed.y;
-      const endX = 1;
-      const endY = 1;
-
-      // Expand animation
-      this.appendAnimation({
-        i,
-        step,
-        startX: 1,
-        startY: 1,
-        endX: this.collapsed.x,
-        endY: this.collapsed.y,
-        outerAnimation: menuCollapseAnimation,
-        innerAnimation: menuCollapsedContentsAnimation,
-      });
-    }
-    menuEase.textContent = ` 
-      @keyframes menuExpandAnimation{
-        ${menuExpandAnimation.join("")}
-      }
-      @keyframes menuExpandContentsAnimation{
-        ${menuExpandContentsAnimation.join("")}
-      }
-      @keyframes menuCollapseAnimation{
-        ${menuCollapseAnimation.join("")}
-      }
-      @keyframes menuCollapsedContentsAnimation{
-        ${menuCollapsedContentsAnimation.join("")}
-      }`;
-    document.head.appendChild(menuEase);
-    return menuEase;
-  }
-
   appendAnimation({
     i,
     step,
@@ -189,3 +196,5 @@ class expandableButton {
     return 1 - Math.pow(1 - v, pow);
   }
 }
+
+Menu._menu;
