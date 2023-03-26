@@ -98,6 +98,7 @@ https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_eff_animate */
     border-radius: 10px;
     box-shadow: var(--box-shadow-color) 0px 0px 20px 5px;
     z-index: 2;
+
 }
 
 .main__quiz-submit-form-activate {
@@ -256,4 +257,35 @@ https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_eff_animate */
     width: 2rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+}
+
+/* button expansion animation from https://css-tricks.com/performant-expandable-animations-building-keyframes-on-the-fly/ */
+
+.menu--active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu--expanded {
+    animation-name: menuExpandAnimation;
+    animation-duration: 1.2s;
+    animation-timing-function: linear;
+}
+
+.menu__contents--expanded {
+    animation-name: menuExpandContentsAnimation;
+    animation-duration: 1.2s;
+    animation-timing-function: linear;
+}
+
+.menu--collapsed {
+    animation-name: menuCollapseAnimation;
+    animation-duration: 1.2s;
+    animation-timing-function: linear;
+}
+
+.menu__contents--collapsed {
+    animation-name: menuCollapseContentsAnimation;
+    animation-duration: 1.2s;
+    animation-timing-function: linear;
 }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz App</title>
     <link rel="stylesheet" href="./css/index.css" />
-    <script src="./js/index.js" defer></script>
+    <script type="module" src="./js/index.js"></script>
   </head>
   <body>
     <header class="main-header">
@@ -33,17 +33,18 @@
       <!-- New question submit form according to: -->
       <!-- https://www.w3schools.com/css/tryit.asp?filename=trycss_forms -->
       <section class="main__quiz-submit-form" data-js="quiz-submit-form">
-        <p class="main__questions" data-js="question">Your Question?</p>
-        <textarea
-          type="text"
-          name="newquestion"
-          class="main__question-input-field"
-          placeholder="This is the way..."
-          rows="5"
-        ></textarea>
-        <button type="submit" class="main__question-submit-button">
-          Submit
-        </button>
+        <div name="submit-form-contents">
+          <p class="main__questions" data-js="question">Your Question?</p>
+          <textarea
+            type="text"
+            class="main__question-input-field"
+            placeholder="This is the way..."
+            rows="5"
+          ></textarea>
+          <button type="submit" class="main__question-submit-button">
+            Submit
+          </button>
+        </div>
       </section>
     </header>
     <main class="main-content">

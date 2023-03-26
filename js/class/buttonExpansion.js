@@ -2,7 +2,7 @@
 // https://developer.chrome.com/blog/performant-expand-and-collapse/ or
 // https://css-tricks.com/performant-expandable-animations-building-keyframes-on-the-fly/
 
-class expandableButton {
+export default class expandableButton {
   constructor(
     activationButton,
     inputForm,
@@ -12,13 +12,12 @@ class expandableButton {
     this.inputForm = inputForm;
     this.inputContents = inputContents;
     this.formToggleButton = activationButton;
-    this.forminitialSizeAndPosition = initialSizeAndPosition;
+    this.formInitialSizeAndPosition = initialSizeAndPosition;
 
     this.expanded = true;
     this.animate = false;
-    this.nFrames = 60;
+    this.numberFrames = 60;
     this.collapsed;
-    this.index = index;
 
     // bind -> binds a function with stated arguments to a variable
     // so it can be used again and again
@@ -27,28 +26,30 @@ class expandableButton {
     this.collapse = this.collapse.bind(this);
     this.toggle = this.toggle.bind(this);
 
-    this.calculateScales();
-    this.createEaseAnimation();
-    this.addEventListeners();
+    this._getCollapsedAndExpandedBoundingBox();
+    this._createEaseAnimation();
+    this._addEventListeners();
 
-    // we have the event listener, why do we still need to call these 2?
     this.collapse();
     this.activate();
   }
 
-  calculateScales() {
+  _getCollapsedAndExpandedBoundingBox() {
     // Storing the expanded and collapsed size of the menu
-    const collapsed = this.menuTitle.getBoundingClientRect();
-    const expanded = this.menu.getBoundingClientRect();
+    const collapsed = this.formInitialSizeAndPosition.getBoundingClientRect();
+    const expanded = this.inputForm.getBoundingClientRect();
 
     // Why divide by expanded.width? benefit ? % ? maybe normalizing
     this.collapsed = {
-      x: collapsed.width / expanded.width,
-      y: collapsed.height / expanded.height,
+      // x: collapsed.width / expanded.width,
+      // y: collapsed.height / expanded.height,
+      x: 0,
+      y: 0,
     };
   }
 
-  createEaseAnimation() {
+  _createEaseAnimation() {
+    // Creating the expand animation for a given number of frames
     let menuEase = document.querySelector(".menu-ease");
     if (menuEase) {
       return menuEase;
@@ -61,15 +62,26 @@ class expandableButton {
     const menuExpandContentsAnimation = [];
     const menuCollapseAnimation = [];
     const menuCollapsedContentsAnimation = [];
-    for (let i = 0; i <= nFrames; i++) {
-      const step = this.ease(i / 100);
+    for (let i = 0; i <= this.numberFrames; i++) {
+      const step = this._ease(i / this.numberFrames);
       const startX = this.collapsed.x;
       const startY = this.collapsed.y;
       const endX = 1;
       const endY = 1;
 
       // Expand animation
-      this.appendAnimation({
+      this._appendAnimation({
+        i,
+        step,
+        startX: this.collapsed.x,
+        startY: this.collapsed.y,
+        endX: 1,
+        endY: 1,
+        outerAnimation: menuExpandAnimation,
+        innerAnimation: menuExpandContentsAnimation,
+      });
+      // Collapse animation
+      this._appendAnimation({
         i,
         step,
         startX: 1,
@@ -98,7 +110,7 @@ class expandableButton {
   }
 
   activate() {
-    this.menu.classList.add("menu--active");
+    this.inputForm.classList.add("menu--active");
     this.animate = true;
   }
 
@@ -112,26 +124,13 @@ class expandableButton {
     const invX = 1 / x;
     const invY = 1 / y;
 
-    this.menu.style.transform = `scale(${x},${y})`;
-    this.menuContents.style.transform = `scale(${invX},${invY})`;
+    this.inputForm.style.transform = `scale(${x},${y})`;
+    this.inputContents.style.transform = `scale(${invX},${invY})`;
 
     if (!this.animate) {
       return;
     }
-    this.applyAnimation({ expand: false });
-  }
-
-  expand() {
-    if (this.expanded) {
-      return;
-    }
-    this.expanded = true;
-    this.menu.style.transform = `scale(1,1)`;
-    this.menuContents.style.transform = `scale(1,1)`;
-    if (!this.animate) {
-      return;
-    }
-    this.applyAnimation({ expand: true });
+    this._applyAnimation({ expand: false });
   }
 
   toggle() {
@@ -142,33 +141,47 @@ class expandableButton {
     this.expand();
   }
 
-  addEventListeners() {
+  expand() {
+    if (this.expanded) {
+      return;
+    }
+    this.expanded = true;
+    this.inputForm.style.transform = `scale(1,1)`;
+    this.inputContents.style.transform = `scale(1,1)`;
+    if (!this.animate) {
+      return;
+    }
+    this._applyAnimation({ expand: true });
+  }
+
+  _addEventListeners() {
     // addEventListener(type,listener)
     // called when the event occurs
     // listener: object that receives info when an event occurs
-    this.menuToggleButton.addEventListener("click", this.toggle);
+    console.log();
+    this.formToggleButton.addEventListener("click", this.toggle);
   }
 
   // opts allows to pass any number of named arguments to a function
-  applyAnimation({ expands } = opts) {
-    this.menu.classList.remove("menu--expanded");
-    this.menu.classList.remove("menu--collapsed");
-    this.menuContents.classList.remove("menu___contents--expanded");
-    this.menuContents.classList.remove("menu___contents--collapsed");
+  _applyAnimation({ expand } = opts) {
+    this.inputForm.classList.remove("menu--expanded");
+    this.inputForm.classList.remove("menu--collapsed");
+    this.inputContents.classList.remove("menu___contents--expanded");
+    this.inputContents.classList.remove("menu___contents--collapsed");
 
     // forcing styles to recalc, so the classes take hold - ???
-    window.getComputedStyle(this.menu).transform;
+    window.getComputedStyle(this.inputForm).transform;
 
     if (expand) {
-      this.menu.classList.add("menu--expanded");
-      this.menuContents.classList.add("menu___contents--expanded");
+      this.inputForm.classList.add("menu--expanded");
+      this.inputContents.classList.add("menu___contents--expanded");
       return;
     }
-    this.menu.classList.add("menu--collapsed");
-    this.menuContents.classList.add("menu___contents--collapsed");
+    this.inputForm.classList.add("menu--collapsed");
+    this.inputContents.classList.add("menu___contents--collapsed");
   }
 
-  appendAnimation({
+  _appendAnimation({
     i,
     step,
     startX,
@@ -184,17 +197,21 @@ class expandableButton {
     const invScaleY = 1 / yScale;
 
     outerAnimation.push(`
-    ${i}% {}`);
+    ${i}% {
+      transform: scale(${xScale}, ${yScale})
+    }`);
+    innerAnimation.push(`
+    ${i}% {
+      transform: scale(${invScaleX}, ${invScaleY})
+    }`);
   }
 
-  clamp(value, min, max) {
+  _clamp(value, min, max) {
     return Math.max(min, Math.min(max, value));
   }
 
-  ease(v, pow = 4) {
-    v = this.clamp(v, 0, 1);
+  _ease(v, pow = 4) {
+    v = this._clamp(v, 0, 1);
     return 1 - Math.pow(1 - v, pow);
   }
 }
-
-Menu._menu;
