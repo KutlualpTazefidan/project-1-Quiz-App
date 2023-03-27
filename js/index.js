@@ -5,7 +5,7 @@ import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
 
 // Create quiz boxes
 const mainContainer = document.querySelector("main");
-createQuizBoxes(6);
+createQuizBoxes(mainContainer, 3);
 
 // Add feature to reveal the answer if the "show answer button clicked"
 const quizCards = document.querySelectorAll(".main__quiz-card");
@@ -19,7 +19,7 @@ quizCards.forEach((quizCard) => {
 // Function for adding quiz/question container through js.
 // Advantage number of containers can be changed very fast
 // html file is clean.
-function createQuizBoxes(numberOfQuestions) {
+function createQuizBoxes(quizContainer, numberOfQuestions) {
   for (let i = 0; i < numberOfQuestions; i++) {
     let quizID = nanoid(6).toUpperCase();
     const quizCard = document.createElement("section");
@@ -93,6 +93,6 @@ function createQuizBoxes(numberOfQuestions) {
     );
     quizBookmarkLabel.append(quizBookmarkImagePressed);
 
-    mainContainer.append(quizCard);
+    quizContainer.append(quizCard);
   }
 }
