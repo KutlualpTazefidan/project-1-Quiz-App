@@ -1,19 +1,20 @@
 @import "./index.css";
 
-.main-header {
+.black-dark-mode {
     color: white;
     background-color: black;
+    transition: background-color 1s ease-in-out;
 }
 
-.main {
-    font-family: var(--font-family-main);
+.grey-dark-mode {
     color: white;
     background-color: rgb(127, 127, 127);
+    transition: background-color 1s ease-in-out;
 }
 
-.footer {
-    color: white;
-    background-color: rgb(127, 127, 127);
+/* to avoid unwanted transition on load */
+.transition-mode {
+    transition: background-color 1s ease-in-out;
 }
 
 .main__personal-information {

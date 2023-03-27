@@ -7,6 +7,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/profile.css" />
     <script src="../js/profile.js" defer></script>
+    <!-- the following prevents unwanted transition on page load: https://stackoverflow.com/questions/14389566/stop-css-transition-from-firing-on-page-load -->
+    <script>
+      "a";
+    </script>
   </head>
   <body>
     <header class="main-header">
@@ -74,6 +78,13 @@
             src="../assets/bookmark.png"
             alt="bookmark button"
             class="footer__icon footer__bookmark-button"
+          />
+        </a>
+        <a href="./submit-question.html" class="footer__link">
+          <img
+            src="../assets/submit-question.png"
+            alt="submit button"
+            class="footer__icon footer__submit"
           />
         </a>
         <a href="#" class="footer__link">

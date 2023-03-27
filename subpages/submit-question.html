@@ -5,8 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../css/bookmark.css" />
+    <link rel="stylesheet" href="../css/submit-question.css" />
     <script type="module" src="../js/submit-question.js" defer></script>
+    <!-- the following prevents unwanted transition on page load: https://stackoverflow.com/questions/14389566/stop-css-transition-from-firing-on-page-load -->
+    <script>
+      "a";
+    </script>
   </head>
   <body>
     <header class="main-header">
@@ -14,8 +18,7 @@
     </header>
     <main class="main">
       <form data-js="form">
-        <label for="formQuestion" class="form__your-question-label"
-          >Your question:</label
+        <label for="formQuestion" class="form__label">Your question:</label
         ><br />
         <textarea
           name="formQuestion"
@@ -27,10 +30,8 @@
           maxlength="150"
         ></textarea
         ><br />
-        <div class="form__number-of-letters-left">characters left</div>
-        <label for="formAnswer" class="form__your-answer-label"
-          >Your answer:</label
-        ><br />
+        <div class="form__number-of-letters-left">150 characters left</div>
+        <label for="formAnswer" class="form__label">Your answer:</label><br />
         <textarea
           name="formAnswer"
           class="form__field"
@@ -40,9 +41,9 @@
           placeholder="This is the way!"
           maxlength="150"
         ></textarea>
-        <div class="form__number-of-letters-left">characters left</div>
+        <div class="form__number-of-letters-left">150 characters left</div>
         <br />
-        <label for="formTag" class="form__tag-label">Tag:</label><br />
+        <label for="formTag" class="form__label">Tag:</label><br />
         <input
           type="text"
           name="formTag"
@@ -72,7 +73,7 @@
         </a>
         <a href="#" class="footer__link">
           <img
-            src="../assets/submit-question.svg"
+            src="../assets/submit-question-pressed.png"
             alt="submit button"
             class="footer__icon footer__submit"
           />

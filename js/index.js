@@ -10,7 +10,6 @@ createQuizBoxes(mainContainer, 3);
 // Add feature to reveal the answer if the "show answer button clicked"
 const quizCards = document.querySelectorAll(".main__quiz-card");
 quizCards.forEach((quizCard) => {
-  console.log(quizCard);
   quizCard.children[2].addEventListener("click", (e) => {
     quizCard.children[2].innerText === "Show answer"
       ? (quizCard.children[2].innerText = "Hide answer")
@@ -30,7 +29,7 @@ function createQuizBoxes(quizContainer, numberOfQuestions) {
 
     const quizIDField = document.createElement("p");
     quizIDField.classList.add("main__quiz-id");
-    quizIDField.innerText = `Q ID: ${quizID}`;
+    quizIDField.innerText = `ID: ${quizID}`;
     quizCard.append(quizIDField);
 
     const quizField = document.createElement("p");

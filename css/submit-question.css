@@ -1,0 +1,23 @@
+@import "./index.css";
+
+.form__field {
+    width: 90%;
+    border-radius: 5px;
+    border-width: 0.01rem;
+    /* margin: 1rem; */
+    padding: 0.5rem;
+    font-family: var(--font-family-main);
+    font-size: medium;
+    box-shadow: var(--box-sh adow-color) 0px 0px 3px 2px;
+}
+
+.form__label {
+    margin-left: 0rem;
+}
+
+.form__number-of-letters-left {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: end;
+    padding-right: 3rem;
+}

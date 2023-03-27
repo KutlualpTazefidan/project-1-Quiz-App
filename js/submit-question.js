@@ -24,7 +24,7 @@ for (let i = 0; i < fieldContainer.length - 1; i++) {
     } else {
       lengthOfAnswer = fieldContainer[i].value.length;
       numberOfLeftLetterContainer[i].innerText =
-        calculateNumberOfCharactersLeft(maxLength, lengthOfQuestion);
+        calculateNumberOfCharactersLeft(maxLength, lengthOfAnswer);
     }
   });
 }

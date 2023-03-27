@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./css/index.css" />
-    <script type="module" src="./js/index.js"></script>
+    <script type="module" src="./js/index.js" defer></script>
+    <!-- the following prevents unwanted transition on page load: https://stackoverflow.com/questions/14389566/stop-css-transition-from-firing-on-page-load -->
+    <script>
+      "a";
+    </script>
   </head>
   <body>
     <header class="main-header">
@@ -31,7 +35,7 @@
         </a>
         <a href="./subpages/submit-question.html" class="footer__link">
           <img
-            src="./assets/submit-question.svg"
+            src="./assets/submit-question.png"
             alt="submit button"
             class="footer__icon footer__submit"
           />
