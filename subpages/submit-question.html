@@ -24,8 +24,10 @@
           rows="10%"
           aria-label="your question to submit"
           placeholder="This is the way!"
+          maxlength="150"
         ></textarea
         ><br />
+        <div class="form__number-of-letters-left">characters left</div>
         <label for="formAnswer" class="form__your-answer-label"
           >Your answer:</label
         ><br />
@@ -36,8 +38,10 @@
           rows="10%"
           aria-label="your answer to submit"
           placeholder="This is the way!"
-        ></textarea
-        ><br />
+          maxlength="150"
+        ></textarea>
+        <div class="form__number-of-letters-left">characters left</div>
+        <br />
         <label for="formTag" class="form__tag-label">Tag:</label><br />
         <input
           type="text"
@@ -45,6 +49,7 @@
           class="form__field"
           aria-label="Input field for hashtags"
           placeholder="#"
+          maxlength="20"
         /><br /><br />
         <button type="submit" class="main__show-answer-button">Submit</button>
       </form>

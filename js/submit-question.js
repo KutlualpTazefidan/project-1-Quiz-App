@@ -5,7 +5,35 @@ import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
 
 const submitQuizForm = document.querySelector('[data-js="form"]');
 const mainContainer = document.querySelector(".main");
+const fieldContainer = document.querySelectorAll(".form__field");
+const numberOfLeftLetterContainer = document.querySelectorAll(
+  ".form__number-of-letters-left"
+);
 
+// Count the number of letters left to use in the submit fields
+let lengthOfQuestion = 0;
+let lengthOfAnswer = 0;
+let maxLength = 150;
+for (let i = 0; i < fieldContainer.length - 1; i++) {
+  const inputText = fieldContainer[i];
+  fieldContainer[i].addEventListener("input", (e) => {
+    if (inputText.getAttribute("name") === "formQuestion") {
+      lengthOfQuestion = fieldContainer[i].value.length;
+      numberOfLeftLetterContainer[i].innerText =
+        calculateNumberOfCharactersLeft(maxLength, lengthOfQuestion);
+    } else {
+      lengthOfAnswer = fieldContainer[i].value.length;
+      numberOfLeftLetterContainer[i].innerText =
+        calculateNumberOfCharactersLeft(maxLength, lengthOfQuestion);
+    }
+  });
+}
+
+function calculateNumberOfCharactersLeft(maxLength, lengthOfText) {
+  return `${maxLength - lengthOfText} characters left`;
+}
+
+// Submit event -> 1. to catch the form data 2. to create a quiz card for it
 submitQuizForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = new FormData(submitQuizForm);
