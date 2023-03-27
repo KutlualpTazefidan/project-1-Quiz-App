@@ -66,7 +66,6 @@ h1 {
     list-style-type: none;
     padding: 1rem;
     padding-top: 1rem;
-    /* gap: 0rem; */
     color: var(--font-color-hashstags);
     font-family: var(--font-family-hashtags);
     font-size: var(--font-size-hashtags);
@@ -101,6 +100,7 @@ h1 {
 
 #bookmark:checked+label>img:last-child {
     z-index: 1;
+    /* content: url("../assets/bookmark_filled.png") */
 }
 
 .main__questions {
