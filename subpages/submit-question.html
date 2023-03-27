@@ -12,7 +12,43 @@
     <header class="main-header">
       <h1>Quiz App</h1>
     </header>
-    <main class="main-content"></main>
+    <main class="main">
+      <form>
+        <label for="form__question" class="form__your-question-label"
+          >Your question:</label
+        ><br />
+        <textarea
+          name="form__question"
+          class="form__field"
+          cols="40%"
+          rows="10%"
+          aria-label="your question to submit"
+          placeholder="This is the way!"
+        ></textarea
+        ><br />
+        <label for="form__answer" class="form__your-answer-label"
+          >Your answer:</label
+        ><br />
+        <textarea
+          name="form__answer"
+          class="form__field"
+          cols="40%"
+          rows="10%"
+          aria-label="your answer to submit"
+          placeholder="This is the way!"
+        ></textarea
+        ><br />
+        <label for="form__tag" class="form__tag-label">Tag:</label><br />
+        <input
+          type="text"
+          name="form__tag"
+          class="form__field"
+          aria-label="Input field for hashtags"
+          placeholder="#"
+        /><br /><br />
+        <button type="submit" class="main__show-answer-button">Submit</button>
+      </form>
+    </main>
     <footer class="footer">
       <nav class="footer__navbar">
         <a href="../index.html" class="footer__link">
