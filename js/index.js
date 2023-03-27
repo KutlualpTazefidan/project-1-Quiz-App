@@ -12,6 +12,9 @@ const quizCards = document.querySelectorAll(".main__quiz-card");
 quizCards.forEach((quizCard) => {
   console.log(quizCard);
   quizCard.children[2].addEventListener("click", (e) => {
+    quizCard.children[2].innerText === "Show answer"
+      ? (quizCard.children[2].innerText = "Hide answer")
+      : (quizCard.children[2].innerText = "Show answer");
     quizCard.children[3].classList.toggle("main__answers--show");
   });
 });

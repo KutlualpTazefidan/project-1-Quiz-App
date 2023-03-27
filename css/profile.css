@@ -1,7 +1,19 @@
 @import "./index.css";
 
-.main-content {
+.main-header {
+    color: white;
+    background-color: black;
+}
+
+.main {
     font-family: var(--font-family-main);
+    color: white;
+    background-color: rgb(127, 127, 127);
+}
+
+.footer {
+    color: white;
+    background-color: rgb(127, 127, 127);
 }
 
 .main__personal-information {
