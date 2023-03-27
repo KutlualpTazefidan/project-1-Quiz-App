@@ -54,6 +54,7 @@ h1 {
     align-items: center;
     position: relative;
     min-width: 90%;
+    max-width: 95%;
     min-height: 10rem;
     /* border: 2px solid black; */
     border-radius: 10px;
