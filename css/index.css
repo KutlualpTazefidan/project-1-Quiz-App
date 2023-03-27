@@ -33,7 +33,7 @@ h1 {
 }
 
 /* Main part */
-.main-content {
+.main {
     font-family: var(--font-family-main);
     display: flex;
     flex-flow: column nowrap;
@@ -60,6 +60,17 @@ h1 {
     box-shadow: var(--box-shadow-color) 0px 0px 20px 5px;
 }
 
+.main__quiz-id {
+    display: flex;
+    align-self: flex-start;
+    list-style-type: none;
+    padding: 1rem;
+    padding-top: 1rem;
+    color: var(--font-color-hashstags);
+    font-family: var(--font-family-hashtags);
+    font-size: var(--font-size-hashtags);
+}
+
 .main__quiz-bookmark {
     position: absolute;
     width: 2.5rem;
@@ -67,16 +78,20 @@ h1 {
     top: -0.6rem;
 }
 
+.main__empty {
+    top: 0;
+    right: 0;
+    /* z-index: -1; */
+}
+
 .main__pressed {
+    top: 0;
+    right: 0;
     z-index: -1;
 }
 
+
 #bookmark {
-    position: absolute;
-    width: 2.5rem;
-    right: 0.6rem;
-    top: -0.6rem;
-    z-index: 1;
     width: 3em;
     height: 3em;
     z-index: 2;
@@ -85,6 +100,7 @@ h1 {
 
 #bookmark:checked+label>img:last-child {
     z-index: 1;
+    /* content: url("../assets/bookmark_filled.png") */
 }
 
 .main__questions {
