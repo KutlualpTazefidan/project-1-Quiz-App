@@ -12,11 +12,6 @@
     transition: background-color 1s ease-in-out;
 }
 
-/* to avoid unwanted transition on load */
-.transition-mode {
-    transition: background-color 1s ease-in-out;
-}
-
 .main__personal-information {
     display: flex;
     justify-content: space-around;

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bookmark.css" />
+    <script type="module" src="./js/bookmark.js" defer></script>
+    <!-- the following prevents unwanted transition on page load: https://stackoverflow.com/questions/14389566/stop-css-transition-from-firing-on-page-load -->
+    <script>
+      "a";
+    </script>
+  </head>
+  <body>
+    <header class="main-header">
+      <h1>Quiz App</h1>
+    </header>
+    <main class="main"></main>
+    <footer class="footer">
+      <nav class="footer__navbar">
+        <a href="./index.html" class="footer__link">
+          <img
+            src="./assets/home.png"
+            alt="home button"
+            class="footer__icon footer__home-button"
+          />
+        </a>
+        <a href="#" class="footer__link">
+          <img
+            src="./assets/bookmark_filled.png"
+            alt="bookmark button"
+            class="footer__icon footer__bookmark-button"
+          />
+        </a>
+        <a href="./submit-question.html" class="footer__link">
+          <img
+            src="./assets/submit-question.png"
+            alt="submit button"
+            class="footer__icon footer__submit"
+          />
+        </a>
+        <a href="./profile.html" class="footer__link">
+          <img
+            src="./assets/profile.png"
+            alt="profile button"
+            class="footer__icon footer__profile"
+          />
+        </a>
+      </nav>
+    </footer>
+  </body>
+</html>

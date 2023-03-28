@@ -1,10 +1,10 @@
 @import "./index.css";
 
-.main-content section:nth-child(3),
+/* .main-content section:nth-child(3),
 .main-content section:nth-child(4) {
     display: none;
-}
+} */
 
 .main__quiz-card>img {
-    content: url(../assets/bookmark_filled.png);
+    content: url(./assets/bookmark_filled.png);
 }

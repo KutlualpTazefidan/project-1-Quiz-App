@@ -2,14 +2,19 @@
 // 139 years needed, in order to have a 1% probability of at least one collision.
 // for production install: npm install --save nanoid
 import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
+// import { createQuizBoxes } from "./index.js";
 
 // Create quiz boxes
 const mainContainer = document.querySelector("main");
-createQuizBoxes(mainContainer, 6);
+createQuizBoxes(mainContainer, 3);
 
 // Add feature to reveal the answer if the "show answer button clicked"
 const quizCards = document.querySelectorAll(".main__quiz-card");
+console.log(quizCards);
 quizCards.forEach((quizCard) => {
+  // cheking all bookmarks
+  quizCard.children[5].checked = true;
+  // revealing the answer feature
   quizCard.children[2].addEventListener("click", (e) => {
     quizCard.children[2].innerText === "Show answer"
       ? (quizCard.children[2].innerText = "Hide answer")
@@ -18,9 +23,6 @@ quizCards.forEach((quizCard) => {
   });
 });
 
-// Function for adding quiz/question container through js.
-// Advantage number of containers can be changed very fast
-// html file is clean.
 function createQuizBoxes(quizContainer, numberOfQuestions) {
   for (let i = 0; i < numberOfQuestions; i++) {
     let quizID = nanoid(6).toUpperCase();
