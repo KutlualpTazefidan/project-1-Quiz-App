@@ -104,13 +104,13 @@ function submitQuizBoxes(quizContainer, formDataEntries) {
   quizCard.append(quizBookmarkLabel);
 
   const quizBookmarkImage = document.createElement("img");
-  quizBookmarkImage.setAttribute("src", "../assets/bookmark.png");
+  quizBookmarkImage.setAttribute("src", "./assets/bookmark.png");
   quizBookmarkImage.setAttribute("class", "main__quiz-bookmark main__empty");
   quizBookmarkImage.setAttribute("alt", "bookmark image for questions");
   quizBookmarkLabel.append(quizBookmarkImage);
 
   const quizBookmarkImagePressed = document.createElement("img");
-  quizBookmarkImagePressed.setAttribute("src", "../assets/bookmark_filled.png");
+  quizBookmarkImagePressed.setAttribute("src", "./assets/bookmark_filled.png");
   quizBookmarkImagePressed.setAttribute(
     "class",
     "main__quiz-bookmark main__pressed"
