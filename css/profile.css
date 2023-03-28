@@ -1,7 +1,15 @@
 @import "./index.css";
 
-.main-content {
-    font-family: var(--font-family-main);
+.black-dark-mode {
+    color: white;
+    background-color: black;
+    transition: background-color 1s ease-in-out;
+}
+
+.grey-dark-mode {
+    color: white;
+    background-color: rgb(127, 127, 127);
+    transition: background-color 1s ease-in-out;
 }
 
 .main__personal-information {
