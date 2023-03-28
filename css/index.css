@@ -12,6 +12,76 @@ body {
     flex-direction: column;
 }
 
+/* Loader */
+/* according to https://ihatetomatoes.net/create-css3-spinning-preloader/ */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.page-loader__loader {
+    display: flex;
+    position: relative;
+    left: calc(50% - 5rem);
+    top: calc(50% - 5rem);
+    width: 10rem;
+    height: 10rem;
+    /* margin: -11% 0 0 -14%; */
+    border: 3px solid #3498db;
+    z-index: 10;
+    border: 3px solid transparent;
+    border-top-color: #3498db;
+    border-radius: 50%;
+
+    animation: spin 2s linear infinite;
+    /* Chrome, Firefox 16+, IE 10+, Opera */
+
+}
+
+.page-loader__loader:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 3px solid #e74c3c;
+    border: 3px solid transparent;
+    border-top-color: #e74c3c;
+    border-radius: 50%;
+
+    animation: spin 3s linear infinite;
+    /* Chrome, Firefox 16+, IE 10+, Opera */
+}
+
+.page-loader__loader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 3px solid #f9c922;
+    border: 3px solid transparent;
+    border-top-color: #f9c922;
+    border-radius: 50%;
+
+    animation: spin 1.5s linear infinite;
+    /* Chrome, Firefox 16+, IE 10+, Opera */
+
+
+}
+
+.page-loader__loader {}
+
+.page-loader__loader:before {}
+
+.page-loader__loader:after {}
+
 /* Upper part of the page */
 .main-header {
     display: flex;
@@ -192,4 +262,26 @@ h1 {
     width: 2rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+}
+
+
+/* Loading page animation  */
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(0deg);
+        /* IE 9 */
+        transform: rotate(0deg);
+        /* Firefox 16+, IE 10+, Opera */
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(360deg);
+        /* IE 9 */
+        transform: rotate(360deg);
+        /* Firefox 16+, IE 10+, Opera */
+    }
 }
